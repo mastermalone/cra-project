@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from '../src/common/configureStore/configureStore';
 import { Provider } from 'react-redux';
-import { Router } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import history from '../src/common/history/history';
 import './index.css';
 import App from './App';
@@ -12,9 +12,9 @@ const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={history}>
+    <BrowserRouter history={history}>
       <App />
-    </Router>
+    </BrowserRouter>
   </Provider>, 
   document.getElementById('root')
 );

@@ -66,3 +66,34 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+### Creating Pages
+
+Create a new component in the "Pages" directory
+Create a container to import the component and import it.
+Use "compose to wrap your redux connect HOC and export it out as default
+
+### Creating a store
+
+In my implementation, you create a store for your page by creating a function that returns an object whos properties contain the following:
+{
+types: [an array of the actions],
+initialState: {
+// The state that you page should start with
+},
+reducer: (state, action) => {
+//The standard reducer switch cases
+},
+creators: a function that return an object that cotains your action creator functions as named propteries whos values are methods.
+}
+
+Export your store as default.
+
+### Add your store to the configured store.
+
+You must add your exported store to the "storeExports" file and export it from there as follows:
+export { default as myStore } from './myPage/myStore';
+
+### Adding a route for your page
+
+Be sure to update App.jsx with your page by adding a rout for it. Follow the examples in App.jsx
