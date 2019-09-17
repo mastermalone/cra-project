@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "pageInfo": {
+    "title": "React with Redux",
+    "subtitle": "Author: Mike Malone",
+    "date": "September 16, 2019",
+    "description": [
+      {
+        "text": "This project is a demonstration of my ability using React.js along with Redux for state managment.  There are a few changes I made to the original directory structure to take note of.  I also added some responsive styling to this project.",
+        "image": "http://placekitten.com/g/500/500"
+      },
+      {
+        "text": "Within my code, you will find my version of how I implement redux stores per page using an object style implementation.  This implementation allows for an easier way to achieve separation of concerns when using action creators and reducers for large applications.",
+        "image": "http://placekitten.com/g/400/400"
+      }
+    ]
+  }
+}

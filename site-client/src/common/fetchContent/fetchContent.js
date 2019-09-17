@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const fetchContent = async (config) => {
   return await axios({
-    method: 'get',
+    method: config.method,
     url: config.url
   });
 };

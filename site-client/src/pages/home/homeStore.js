@@ -1,10 +1,8 @@
 import get from 'lodash/get';
-import { createSelector } from 'reselect';
 import fetchContent from '../../common/fetchContent/fetchContent';
+import toastr from 'toastr';
 
 const homeStore = () => {
-
-  console.log('Getting the homestore')
   const homeStore = {
     name: 'home',
     types: {
@@ -44,14 +42,19 @@ const homeStore = () => {
 
 export const getPageContent = async (dispatch) => {
   const { creators: { getCarouselImages } } = homeStore();
-  const url = 'https://pixabay.com/api/?key=13638022-5198c1daa726cc884a84dc5eb&q=yellow+flowers&image_type=photo';
-  const pageData = await fetchContent({
-    url: url
-  });
-
-  const { hits } = pageData.data;
-  const mappedImages = hits.map(hit => ({url: hit.userImageURL}));
-  dispatch(getCarouselImages(mappedImages));
+  const url = 'https://api.giphy.com/v1/gifs/search?api_key=NhLjkasi60kqXKxzBbvKFKU9fzHoRROf&q=cats&limit=10&offset=0&rating=G&lang=en';
+  
+  try {
+    const pageData = await fetchContent({ url, method: 'get' });
+    const { data } = pageData.data;
+    const mappedGiphyImages = data.map(({ images: { original: { url }} }) => ({
+      url,
+    }));
+    
+    dispatch(getCarouselImages(mappedGiphyImages));
+  } catch (err) {
+    toastr.error('There was an error obtaining the Home page data.', err);
+  }
 }
 
 export default homeStore();

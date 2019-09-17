@@ -1,0 +1,11 @@
+@import '../../common/sass/variables';
+
+.about-page {
+  h1 {
+    @include heading-text;
+  }
+
+  h5 {
+    @include sub-heading-text;
+  }
+}

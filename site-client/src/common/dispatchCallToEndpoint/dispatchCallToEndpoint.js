@@ -4,9 +4,8 @@ import React from 'react';
 const dispatchCallToEndpoint = (WrappedComponent) => {
   class DispatchCallToEndpoint extends React.Component {
     componentDidMount() {
-      console.log('this.props', this.props);
       const { getPageContent } = this.props;
-      console.log('The wrapped component mounted');
+
       getPageContent();
     }
 

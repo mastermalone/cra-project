@@ -1,5 +1,6 @@
 import get from 'lodash/get';
-import { createSelector } from 'reselect';
+import fetchContent from '../../common/fetchContent/fetchContent';
+import toastr from 'toastr';
 
 const aboutStore = () => {
   
@@ -11,9 +12,9 @@ const aboutStore = () => {
     initialState: {
       content: {}
     },
-    reducer: (state = aboutStore.initialState, action ={}) => {
-      switch(action.payload) {
-        case aboutStore.GET_ABOUT_PAGE_CONTENT:
+    reducer: (state = aboutStore.initialState, action = {}) => {
+      switch(action.type) {
+        case aboutStore.types.GET_ABOUT_PAGE_CONTENT:
           return {
             ...aboutStore.initialState,
             content: {
@@ -37,5 +38,21 @@ const aboutStore = () => {
 
   return aboutStore;
 };
+
+export const getPageContent = async (dispatch) => {
+  const { creators: { getAboutContent }} = aboutStore();
+  const url = './mocks/aboutPage.json';
+
+  try {
+    const pageData = await fetchContent({ url, method: 'get' });
+    const { data: { pageInfo }} = pageData;
+  
+    dispatch(getAboutContent(pageInfo));
+
+  } catch (err) {
+    toastr.error('There was an error obtaining the About page data.', err);
+  }
+  
+}
 
 export default aboutStore();
