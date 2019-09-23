@@ -1,6 +1,7 @@
 import get from 'lodash/get';
 import fetchContent from '../../common/fetchContent/fetchContent';
 import toastr from 'toastr';
+import { createSelector } from 'reselect';
 
 const homeStore = () => {
   const homeStore = {
@@ -34,6 +35,14 @@ const homeStore = () => {
     },
     selectors: {
       getCarouselImages: state => get(state, 'home.content.images.carouselImages', []),
+      getCustomCarouselImages: state => createSelector(() => {
+        const { selectors: { getCarouselImages } } = homeStore;
+        const images = getCarouselImages(state);
+
+        return {
+          images,
+        }
+      }),
     }
   }
 

@@ -5,10 +5,11 @@ import dispatchCallToEndpoint from '../../common/dispatchCallToEndpoint/dispatch
 
 import homeStore, { getPageContent } from './homeStore';
 
-const { selectors: { getCarouselImages } } = homeStore;
+const { selectors: { getCarouselImages, getCustomCarouselImages } } = homeStore;
 
 const mapStateToProps = state => ({
   images: getCarouselImages(state),
+  customImages: getCustomCarouselImages(state)(),
 });
 
 const mapDispatchToProps = (dispatch) => ({

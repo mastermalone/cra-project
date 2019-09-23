@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 import './home.scss';
 
 
-const homePage = ({ images }) => {
+const homePage = ({ images, customImages }) => {
+  console.log('customImages JSX', customImages);
   return (
     <div className="home-page">
       <Spinner show={!images.length} spinnerClass="spinner-border text-primary"/>
