@@ -5,22 +5,21 @@ import PropTypes from 'prop-types';
 import './home.scss';
 
 
-const homePage = ({ images, customImages }) => {
-  console.log('customImages JSX', customImages);
+const homePage = ({ customImages }) => {
   return (
     <div className="home-page">
-      <Spinner show={!images.length} spinnerClass="spinner-border text-primary"/>
-      <Carousel images={images} id="homepage-carousel" wrap={false}/>
+      <Spinner show={!customImages.length} spinnerClass="spinner-border text-primary"/>
+      <Carousel images={customImages} id="homepage-carousel" wrap={false}/>
     </div>
   )
 };
 
 homePage.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.object),
+  customImages: PropTypes.arrayOf(PropTypes.object),
 };
 
 homePage.defaultProps = {
-  images: [],
+  imcustomImagesages: [],
 };
 
 export default homePage;

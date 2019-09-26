@@ -24,7 +24,7 @@ const homeStore = () => {
           }
         }
         default:
-          return homeStore.initialState;
+          return state;
       }
     },
     creators: {
@@ -39,9 +39,7 @@ const homeStore = () => {
         const { selectors: { getCarouselImages } } = homeStore;
         const images = getCarouselImages(state);
 
-        return {
-          images,
-        }
+        return images;
       }),
     }
   }

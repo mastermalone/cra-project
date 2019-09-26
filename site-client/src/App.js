@@ -11,6 +11,7 @@ Add lazy loaded componets here
 */
 const homePage = React.lazy(() => import('./pages/home/homeContainer'));
 const aboutPage = React.lazy(() => import('./pages/about/aboutContainer'));
+const productsPage = React.lazy(() => import('./pages/products/productsContainer'));
 
 // Fills the routed component with some initial props
 const renderComponent = (Component, otherProps) => props => (
@@ -26,7 +27,8 @@ class App extends React.Component {
       navigation: {
         paths: [
           {title: 'Home', url: '/'},
-          {title: 'About', url: '/about'}
+          {title: 'About', url: '/about'},
+          {title: 'Products', url: '/products'}
         ],
       }
     };
@@ -43,6 +45,7 @@ class App extends React.Component {
             <Switch location={location}>
               <Route exact path="/" render={renderComponent(homePage)} />
               <Route path="/about" render={renderComponent(aboutPage)} />
+              <Route path="/products" render={renderComponent(productsPage)} />
             </Switch>
           </Suspense>
         </div>

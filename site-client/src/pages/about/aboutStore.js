@@ -22,7 +22,7 @@ const aboutStore = () => {
             }        
           }
           default:
-            return aboutStore.initialState
+            return state
       }
     },
     creators:{
