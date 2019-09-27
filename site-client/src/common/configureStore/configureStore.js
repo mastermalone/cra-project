@@ -6,9 +6,9 @@ import storage from 'redux-persist/lib/storage';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
-import { homeStore, aboutStore, productsStore } from '../../pages/storeExports';
+import { appStore, homeStore, aboutStore, productsStore } from '../../pages/storeExports';
 
-const stores = [homeStore, aboutStore, productsStore];
+const stores = [appStore, aboutStore, homeStore, productsStore];
 const baseState = {};
 
 const getStoreReducers = () => {

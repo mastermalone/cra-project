@@ -19,24 +19,14 @@ const renderComponent = (Component, otherProps) => props => (
 )
 
 class App extends React.Component {
+  // eslint-disable-next-line no-useless-constructor
   constructor(props) {
     super(props);
-
-    // Ideally, these paths would come from an endpoint
-    this.state = {
-      navigation: {
-        paths: [
-          {title: 'Home', url: '/'},
-          {title: 'About', url: '/about'},
-          {title: 'Products', url: '/products'}
-        ],
-      }
-    };
   }
 
   render() {
-    const { location } = this.props;
-    const { navigation: { paths } } = this.state;
+    const { location, navigation: { paths } } = this.props;
+    
     return (
       <div>
         <Header><Navigation paths={paths} /></Header>

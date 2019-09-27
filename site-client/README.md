@@ -71,7 +71,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 Create a new component in the "Pages" directory
 Create a container to import the component and import it.
-Use "compose to wrap your redux connect HOC and export it out as default
+Use "compose" to wrap your "react-redux connect" HOC and export it out as 'default'
 
 ### Creating a store
 
@@ -93,6 +93,10 @@ Export your store as default.
 
 You must add your exported store to the "storeExports" file and export it from there as follows:
 export { default as myStore } from './myPage/myStore';
+Next you must include the export of your store to the configuireStore.js file in two places:
+
+- Add it to the import statement along with the other stores
+- The stores[] array
 
 ### Adding a route for your page
 

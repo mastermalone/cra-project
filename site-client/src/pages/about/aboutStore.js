@@ -41,7 +41,7 @@ const aboutStore = () => {
 
 export const getPageContent = async (dispatch) => {
   const { creators: { getAboutContent }} = aboutStore();
-  const url = './mocks/aboutPage.json';
+  const url = 'https://site-client.s3-us-west-1.amazonaws.com/aboutPage.json';
 
   try {
     const pageData = await fetchContent({ url, method: 'get' });

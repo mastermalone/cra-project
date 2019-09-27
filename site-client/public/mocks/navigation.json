@@ -1,0 +1,10 @@
+{
+  "success": true,
+  "navigation": {
+    "paths": [
+      { "title": "Home", "url": "/" },
+      { "title": "About", "url": "/about" },
+      { "title": "Products", "url": "/products" }
+    ]
+  }
+}

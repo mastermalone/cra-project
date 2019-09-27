@@ -36,6 +36,9 @@ const homeStore = () => {
     selectors: {
       getCarouselImages: state => get(state, 'home.content.images.carouselImages', []),
       getCustomCarouselImages: state => createSelector(() => {
+        /**
+         * This is a custom selector that allows you to create custom data out of other selectors
+         */
         const { selectors: { getCarouselImages } } = homeStore;
         const images = getCarouselImages(state);
 
