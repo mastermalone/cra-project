@@ -30,12 +30,27 @@ const productStore = () => {
       }),
     },
     selectors: {
-      getProducts: state => get(state, 'products.content.items'),
+      getProducts: state => get(state, 'products.content.items', []),
       getFilteredProducts: state => createSelector(() => {
         const {selectors: { getProducts }} = productStore;
         const products = getProducts(state);
-        const filteredData = products.filter(({ employee_age }) => parseInt(employee_age) === 19);
-        return filteredData;
+
+        if (!products.length) {
+          return products;
+        }
+
+        const filteredData = products.filter(({ employee_age }) => parseInt(employee_age) === 21);
+
+        const mappedFilteredData = filteredData.map( data => {
+          let { profile_image } = data;
+          if (!profile_image) {
+            data.profile_image = 'http://placekitten.com/g/200/200';
+          }
+
+          return data;
+        });
+
+        return mappedFilteredData;
       }),
     }
   }
@@ -48,7 +63,7 @@ export const getPageContent = async (dispatch) => {
   const url = 'http://dummy.restapiexample.com/api/v1/employees';
   const pageContent = await fetchContent({ method: 'get', url });
   const { data } = pageContent;
-
+  
   dispatch(getProducts(data));
 }
 

@@ -3,7 +3,6 @@ import { compose } from 'redux';
 import Products from './products';
 import productsStore, { getPageContent } from './productsStore';
 import dispatchCallToEndpoint from '../../common/dispatchCallToEndpoint/dispatchCallToEndpoint';
-// import { dispatch } from 'rxjs/internal/observable/range';
 
 const { selectors: { getFilteredProducts } } = productsStore; 
 

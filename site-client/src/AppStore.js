@@ -1,5 +1,5 @@
 import get from 'lodash/get';
-import tostr from 'toastr';
+import toastr from 'toastr';
 import fetchContent from './common/fetchContent/fetchContent';
 
 const appStore = () => {
@@ -10,7 +10,6 @@ const appStore = () => {
     },
     types: {
       GET_NAVIGATION: 'GET_NAVIGATION',
-
     },
     reducer: (state = appStore.initialState, action = {}) => {  
       switch (action.type) {
@@ -51,6 +50,6 @@ export const getPageContent = async(dispatch) => {
     dispatch(getNaviagtion(navigation));
 
   } catch (err) {
-    tostr.error('There was an error fetching the main navigation\n', err);
+    toastr.error('There was an error fetching the main navigation\n', err);
   }
 }
